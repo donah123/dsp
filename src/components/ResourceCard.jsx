@@ -12,7 +12,7 @@ export default function ResourceCard({ title, description, type = 'Playbook', ic
 
   return (
     <>
-      <div className="card p-24 resource-card" onClick={handleClick} role="button" tabIndex={0}>
+      <div className="card p-24 resource-card resource-card-animate" onClick={handleClick} role="button" tabIndex={0}>
         <div className="resource-icon">{icon}</div>
         <span className="badge sand" style={{ marginBottom: '0.5rem' }}>{type}</span>
         <h3>{title}</h3>

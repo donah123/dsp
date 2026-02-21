@@ -15,21 +15,21 @@ export function Hero({ eyebrow = 'Enterprise Data • Cloud • AI', title = 'Da
             <button className="btn btn-ghost" onClick={onSecondary || (() => document.getElementById('consultancy-overview')?.scrollIntoView({ behavior: 'smooth' }))}>Explore offerings</button> 
           </div> 
         </div> 
-        <div> 
-          <Card> 
-            <div className="label">What we deliver</div> 
+        <div className="hero-animate-card hero-float"> 
+          <Card style={{ background: 'rgba(255,255,255,.95)', backdropFilter: 'blur(10px)' }}> 
+            <div className="label hero-card-label" style={{ color: 'var(--primary)' }}>💼 What we deliver</div> 
             <ul className="bullets"> 
-              <li>Cloud‑native data platforms (Azure‑first) with governance baked in</li> 
-              <li>BI: KPI frameworks, dashboards, data storytelling</li> 
-              <li>Migrations & modernization with minimal downtime</li> 
-              <li>Training programs—from workshops to enterprise bootcamps</li> 
+              <li className="hero-card-item">Cloud‑native data platforms (Azure‑first) with governance baked in</li> 
+              <li className="hero-card-item">BI: KPI frameworks, dashboards, data storytelling</li> 
+              <li className="hero-card-item">Migrations & modernization with minimal downtime</li> 
+              <li className="hero-card-item">Training programs—from workshops to enterprise bootcamps</li> 
             </ul> 
             <div className="stats"> 
-              <div className="stat"> 
+              <div className="stat hero-card-stat"> 
                 <div className="stat-k">≤ 90 days</div> 
                 <div className="stat-l">Avg. Time-to-Value</div> 
               </div> 
-              <div className="stat"> 
+              <div className="stat hero-card-stat"> 
                 <div className="stat-k">75+</div> 
                 <div className="stat-l">Training NPS</div> 
               </div> 
