@@ -28,7 +28,7 @@
 // ============================================
 
 const ADMIN_EMAIL = 'cmdtechs@gmail.com'; // Still used for notification
-const WEB3FORMS_ACCESS_KEY = 'YOUR_WEB3FORMS_ACCESS_KEY'; // Replace with your Web3Forms access key
+const WEB3FORMS_ACCESS_KEY = '2c98e418-8754-4040-b511-c075d0e7656a'; // Replace with your Web3Forms access key
 
 // ============================================
 // 👆 CHANGE THIS EMAIL ADDRESS 👆
