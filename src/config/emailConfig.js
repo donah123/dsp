@@ -27,7 +27,8 @@
 // 👇 CHANGE THIS EMAIL ADDRESS 👇
 // ============================================
 
-const ADMIN_EMAIL = 'admin@datasolutionsplatform.com';
+const ADMIN_EMAIL = 'cmdtechs@gmail.com'; // Still used for notification
+const WEB3FORMS_ACCESS_KEY = 'YOUR_WEB3FORMS_ACCESS_KEY'; // Replace with your Web3Forms access key
 
 // ============================================
 // 👆 CHANGE THIS EMAIL ADDRESS 👆
@@ -39,28 +40,23 @@ const ADMIN_EMAIL = 'admin@datasolutionsplatform.com';
 
 export default {
   adminEmail: ADMIN_EMAIL,
-  formSubmitEndpoint: `https://formsubmit.co/ajax/${ADMIN_EMAIL}`,
-  
+  web3formsAccessKey: WEB3FORMS_ACCESS_KEY,
+  formSubmitEndpoint: 'https://web3forms.com/api',
   // Status check
   isConfigured: () => {
-    const defaultEmails = [
-      'admin@datasolutionsplatform.com',
-      'your-email@example.com',
-      'youremail@domain.com'
-    ];
-    return !defaultEmails.includes(ADMIN_EMAIL);
+    return WEB3FORMS_ACCESS_KEY && WEB3FORMS_ACCESS_KEY !== 'YOUR_WEB3FORMS_ACCESS_KEY';
   },
-  
   // Display configuration status
   logStatus: () => {
     console.log('='.repeat(50));
     console.log('📧 EMAIL SERVICE CONFIGURATION STATUS');
     console.log('='.repeat(50));
     console.log(`Admin Email: ${ADMIN_EMAIL}`);
-    console.log(`Configuration Status: ${config.isConfigured() ? '✅ Configured' : '❌ Not Configured'}`);
-    console.log(`FormSubmit Endpoint: ${config.formSubmitEndpoint}`);
-    if (!config.isConfigured()) {
-      console.warn('⚠️  WARNING: Using placeholder email. Update src/config/emailConfig.js');
+    console.log(`Web3Forms Access Key: ${WEB3FORMS_ACCESS_KEY}`);
+    console.log(`Configuration Status: ${WEB3FORMS_ACCESS_KEY && WEB3FORMS_ACCESS_KEY !== 'YOUR_WEB3FORMS_ACCESS_KEY' ? '✅ Configured' : '❌ Not Configured'}`);
+    console.log(`Web3Forms Endpoint: https://web3forms.com/api`);
+    if (!WEB3FORMS_ACCESS_KEY || WEB3FORMS_ACCESS_KEY === 'YOUR_WEB3FORMS_ACCESS_KEY') {
+      console.warn('⚠️  WARNING: Web3Forms access key not set. Update src/config/emailConfig.js');
     }
     console.log('='.repeat(50));
   }
@@ -68,24 +64,21 @@ export default {
 
 const config = {
   adminEmail: ADMIN_EMAIL,
-  formSubmitEndpoint: `https://formsubmit.co/ajax/${ADMIN_EMAIL}`,
+  web3formsAccessKey: WEB3FORMS_ACCESS_KEY,
+  formSubmitEndpoint: 'https://web3forms.com/api',
   isConfigured: function() {
-    const defaultEmails = [
-      'admin@datasolutionsplatform.com',
-      'your-email@example.com',
-      'youremail@domain.com'
-    ];
-    return !defaultEmails.includes(ADMIN_EMAIL);
+    return WEB3FORMS_ACCESS_KEY && WEB3FORMS_ACCESS_KEY !== 'YOUR_WEB3FORMS_ACCESS_KEY';
   },
   logStatus: function() {
     console.log('='.repeat(50));
     console.log('📧 EMAIL SERVICE CONFIGURATION STATUS');
     console.log('='.repeat(50));
     console.log(`Admin Email: ${ADMIN_EMAIL}`);
-    console.log(`Configuration Status: ${this.isConfigured() ? '✅ Configured' : '❌ Not Configured'}`);
-    console.log(`FormSubmit Endpoint: ${this.formSubmitEndpoint}`);
-    if (!this.isConfigured()) {
-      console.warn('⚠️  WARNING: Using placeholder email. Update src/config/emailConfig.js');
+    console.log(`Web3Forms Access Key: ${WEB3FORMS_ACCESS_KEY}`);
+    console.log(`Configuration Status: ${WEB3FORMS_ACCESS_KEY && WEB3FORMS_ACCESS_KEY !== 'YOUR_WEB3FORMS_ACCESS_KEY' ? '✅ Configured' : '❌ Not Configured'}`);
+    console.log(`Web3Forms Endpoint: https://web3forms.com/api`);
+    if (!WEB3FORMS_ACCESS_KEY || WEB3FORMS_ACCESS_KEY === 'YOUR_WEB3FORMS_ACCESS_KEY') {
+      console.warn('⚠️  WARNING: Web3Forms access key not set. Update src/config/emailConfig.js');
     }
     console.log('='.repeat(50));
   }
