@@ -80,3 +80,33 @@ h3{font-size:1rem;color:var(--deep);margin:.25rem 0}
 .links a{color:var(--deep);text-decoration:none;font-weight:600;padding:.25rem .5rem;border-radius:10px}
 .links a:hover{background:rgba(237,228,194,.6)}
 @media(min-width:900px){.foot-wrap{flex-direction:row;align-items:center}}
+
+/* Modal Styles */
+.modal-overlay{position:fixed;inset:0;background:rgba(15,31,15,.75);display:flex;align-items:center;justify-content:center;z-index:999;padding:1rem}
+.modal-content{background:#fff;border-radius:20px;padding:2rem;max-width:480px;width:100%;position:relative;box-shadow:0 20px 80px rgba(0,0,0,.3)}
+.modal-close{position:absolute;top:1rem;right:1rem;background:transparent;border:0;font-size:2rem;color:var(--ink);cursor:pointer;width:36px;height:36px;display:flex;align-items:center;justify-content:center;border-radius:10px;line-height:1}
+.modal-close:hover{background:var(--sand)}
+.success-message{text-align:center;padding:2rem 0}
+
+/* Cookie Consent Banner */
+.cookie-banner{position:fixed;bottom:0;left:0;right:0;background:#fff;border-top:2px solid var(--sand);box-shadow:0 -4px 20px rgba(0,0,0,.1);z-index:998;padding:1.5rem}
+.cookie-content{max-width:1120px;margin:0 auto;display:flex;flex-direction:column;gap:1rem;align-items:flex-start}
+.cookie-text h3{margin:0 0 0.5rem;color:var(--deep);font-size:1.1rem}
+.cookie-text p{margin:0;font-size:0.9rem;opacity:.9}
+.cookie-actions{display:flex;gap:.5rem;flex-wrap:wrap}
+@media(min-width:900px){.cookie-content{flex-direction:row;align-items:center;justify-content:space-between}}
+
+/* Resource Card */
+.resource-card{cursor:pointer;transition:transform .2s,box-shadow .2s;position:relative}
+.resource-card:hover{transform:translateY(-4px);box-shadow:0 8px 24px rgba(0,0,0,.12)}
+.resource-icon{font-size:2.5rem;margin-bottom:0.5rem}
+.resource-action{margin-top:0.75rem;display:flex;align-items:center;gap:.25rem}
+
+/* Anchor blocks for smooth scrolling */
+.anchor-block{scroll-margin-top:80px;margin-top:2rem;padding-top:1rem}
+
+/* Additional utility classes */
+.text-center{text-align:center}
+.mb-16{margin-bottom:1rem}
+.mb-24{margin-bottom:1.5rem}
+.mb-32{margin-bottom:2rem}

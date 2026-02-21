@@ -5,6 +5,18 @@ import VideoEmbed from './components/VideoEmbed.jsx'
 import MarkdownBlock from './components/MarkdownBlock.jsx'
 import { CTA } from './components/cta.jsx'
 import { Hero } from './components/hero.jsx'
+import CookieConsent from './components/CookieConsent.jsx'
+import ResourceCard from './components/ResourceCard.jsx'
+import { 
+  trackPageView, 
+  trackInteraction, 
+  trackServiceInterest, 
+  trackTrainingInterest,
+  trackVideoPlay,
+  trackCTAClick,
+  trackFormSubmission,
+  initVisitorTracking
+} from './utils/analytics.js'
 
 // --- Navbar
 function Navbar() {
