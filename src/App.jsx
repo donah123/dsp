@@ -96,7 +96,10 @@ function Footer(){
     <footer className="site-footer">
       <div className="container foot-wrap">
         <div className="brand-mini" onClick={()=>navTo('#home')} style={{cursor:'pointer'}}>
-          <div className="logo small">DSP</div>
+          <div className="logo small">
+            {/* use the same jpeg imported at top for consistency */}
+            <img src={logoImage} alt="DSP logo" style={{width:'100%',height:'100%',borderRadius:'inherit',objectFit:'contain'}} />
+          </div>
           <span>Data Solutions Platform</span>
         </div>
         <div className="links">
