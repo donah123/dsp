@@ -1281,10 +1281,10 @@ export default function App(){
 
           <XSection eyebrow="Learn" title="Featured Training: AWS Data Pipeline">
             <p className="lead mb-24">Watch our comprehensive tutorial on building end-to-end data pipelines.</p>
-            {/* switched to the updated video link per request */}
+            {/* switched to playlist embed as requested */}
             <VideoEmbed 
-              id="kGxLmxcNajQ" 
-              title="Build a Complete AWS Data Pipeline — From CSV to Power BI!" 
+              id="videoseries?list=PLfZzmUY-vwTG39mRlm4Y41bdUa7O9QevE" 
+              title="DSP Training Playlist" 
             />
           </XSection>
 
