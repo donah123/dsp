@@ -634,7 +634,8 @@ function Training(){
             <h4 style={{ marginTop: '1rem', color: 'var(--deep)' }}>End-to-End Data Project with AWS & Databricks</h4>
             <p>Learn how to build a complete data platform from scratch using AWS services and Databricks.</p>
             <div style={{ marginTop: '1rem' }}>
-              <VideoEmbed id="dQw4w9WgXcQ" title="End-to-End Data Project with AWS & Databricks" />
+              {/* embed playlist instead of single video */}
+              <VideoEmbed id="videoseries?list=PLfZzmUY-vwTG39mRlm4Y41bdUa7O9QevE" title="DSP Training Playlist" />
             </div>
           </div>
           
@@ -643,8 +644,8 @@ function Training(){
             <p>Step-by-step guide to creating a production-ready data pipeline with AWS and Power BI integration.</p>
             <div style={{ marginTop: '1rem' }}>
               <VideoEmbed 
-                id="dQw4w9WgXcQ" 
-                title="Build a Complete AWS Data Pipeline — From CSV to Power BI" 
+                id="videoseries?list=PLfZzmUY-vwTG39mRlm4Y41bdUa7O9QevE" 
+                title="DSP Training Playlist" 
               />
             </div>
           </div>
@@ -1280,8 +1281,9 @@ export default function App(){
 
           <XSection eyebrow="Learn" title="Featured Training: AWS Data Pipeline">
             <p className="lead mb-24">Watch our comprehensive tutorial on building end-to-end data pipelines.</p>
+            {/* switched to the updated video link per request */}
             <VideoEmbed 
-              id="dQw4w9WgXcQ" 
+              id="kGxLmxcNajQ" 
               title="Build a Complete AWS Data Pipeline — From CSV to Power BI!" 
             />
           </XSection>
