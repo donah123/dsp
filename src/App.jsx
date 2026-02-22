@@ -582,6 +582,8 @@ function Training(){
               <li>Modern data warehousing patterns and best practices</li>
             </ul>
           </div>
+
+         
         </div>
         
         <div id="bootcamps" className="anchor-block">
@@ -634,19 +636,8 @@ function Training(){
             <h4 style={{ marginTop: '1rem', color: 'var(--deep)' }}>End-to-End Data Project with AWS & Databricks</h4>
             <p>Learn how to build a complete data platform from scratch using AWS services and Databricks.</p>
             <div style={{ marginTop: '1rem' }}>
-              {/* embed playlist instead of single video */}
-              <VideoEmbed id="videoseries?list=PLfZzmUY-vwTG39mRlm4Y41bdUa7O9QevE" title="DSP Training Playlist" />
-            </div>
-          </div>
-          
-          <div className="mb-24">
-            <h4 style={{ marginTop: '1rem', color: 'var(--deep)' }}>Build a Complete AWS Data Pipeline — From CSV to Power BI</h4>
-            <p>Step-by-step guide to creating a production-ready data pipeline with AWS and Power BI integration.</p>
-            <div style={{ marginTop: '1rem' }}>
-              <VideoEmbed 
-                id="videoseries?list=PLfZzmUY-vwTG39mRlm4Y41bdUa7O9QevE" 
-                title="DSP Training Playlist" 
-              />
+              {/* single video embed as requested */}
+              <VideoEmbed id="kGxLmxcNajQ" title="End-to-End Data Project with AWS & Databricks" />
             </div>
           </div>
         </div>
@@ -1279,9 +1270,9 @@ export default function App(){
             </div>
           </XSection>
 
-          <XSection eyebrow="Learn" title="Featured Training: AWS Data Pipeline">
+          <XSection eyebrow="Learn" title="30 Days SQL Challenge">
             <p className="lead mb-24">Watch our comprehensive tutorial on building end-to-end data pipelines.</p>
-            {/* switched to playlist embed as requested */}
+            {/* restored playlist embed as before */}
             <VideoEmbed 
               id="videoseries?list=PLfZzmUY-vwTG39mRlm4Y41bdUa7O9QevE" 
               title="DSP Training Playlist" 
