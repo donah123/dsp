@@ -1,4 +1,26 @@
 import React, { useEffect, useMemo, useState } from 'react'
+import logoImage from './assets/logo.jpeg';
+import slider2 from './assets/slider2.jpg';
+import slide1 from './assets/slider1.jpg'; /* if you plan to keep previous sample */
+
+// static stats display for hero
+function StatSlider(){
+  const stats=[
+    {value:'50+',label:'Projects Delivered'},
+    {value:'10+',label:'Consultants'},
+    {value:'98%',label:'Client Satisfaction'}
+  ];
+  return (
+    <div style={{ display:'flex', justifyContent:'center', gap:'2.5rem', flexWrap:'wrap' }}>
+      {stats.map((s,idx)=>(
+        <div key={idx} className="hero-animate-stat" style={{ textAlign:'center' }}>
+          <div style={{ fontSize:'2rem', fontWeight:'800', color:'#fff' }}>{s.value}</div>
+          <div style={{ fontSize:'.85rem', color:'rgba(255,255,255,.7)', textTransform:'uppercase', letterSpacing:'.05em' }}>{s.label}</div>
+        </div>
+      ))}
+    </div>
+  );
+}
 import { Section as XSection, Card as XCard, TilesGrid } from './components/ui.jsx'
 import Overview from './components/Overview.jsx'
 import VideoEmbed from './components/VideoEmbed.jsx'
@@ -29,7 +51,9 @@ function Navbar() {
     <header className="site-header">
       <div className="container nav-wrap">
         <div className="brand" onClick={()=>navTo('#home')} style={{cursor:'pointer'}}>
-          <div className="logo">DSP</div>
+          <div className="logo">
+            <img src={logoImage} alt="DSP logo" style={{width:'100%',height:'100%',borderRadius:'12px',objectFit:'contain'}} />
+          </div>
           <span className="brand-name">Data Solutions Platform</span>
         </div>
         <nav className="nav" aria-label="Main">
@@ -57,7 +81,7 @@ function Navbar() {
             <li><a onClick={()=>navTo('#request')}>Request our services</a></li>
             <li><a onClick={()=>navTo('#tech')}>Technology Stack</a></li>
             <li><a onClick={()=>navTo('#contact')}>Contact us</a></li>
-            <li><a className="btn btn-orange" onClick={()=>navTo('#login')}>Login</a></li>
+            {/* login removed temporarily */}
           </ul>
         </nav>
       </div>
@@ -123,44 +147,17 @@ function HomeTop(){
     trackCTAClick('hero_explore_offerings');
     document.getElementById('consultancy-overview')?.scrollIntoView({behavior:'smooth'});
   };
-  
-  return (
-    <section id="home" className="hero gradient">
-      <div className="container grid-2">
-        <div>
-          <span className="badge sand hero-animate-badge">
-            🚀 Enterprise Data • Cloud • AI
-          </span>
-          <h1 className="hero-animate-title" style={{ color: '#fff', marginTop: '1rem', lineHeight: '1.2' }}>
-            Transform Your Data Into Strategic Advantage
-          </h1>
-          <p className="hero-animate-text" style={{ color: 'rgba(255,255,255,.85)', fontSize: '1.15rem', lineHeight: '1.7', marginTop: '1.5rem' }}>
-            Partner with DSP to design modern data platforms, unlock powerful analytics, and upskill teams with world-class training programs.
-          </p>
-          <div className="actions hero-animate-buttons" style={{ marginTop: '2rem' }}>
-            <a className="btn btn-orange hero-pulse" onClick={handlePrimaryClick}>
-              <span style={{ fontSize: '1.1rem' }}>Get Started</span>
-            </a>
-            <button className="btn btn-ghost hero-glow" onClick={handleSecondaryClick}>
-              <span>Explore Solutions</span>
-              <span style={{ fontSize: '1.2rem' }}>→</span>
-            </button>
-          </div>
-          <div style={{ marginTop: '3rem', display: 'flex', gap: '2rem', flexWrap: 'wrap' }}>
-            <div className="hero-animate-stat">
-              <div style={{ fontSize: '2rem', fontWeight: '800', color: '#fff' }}>500+</div>
-              <div style={{ fontSize: '.85rem', color: 'rgba(255,255,255,.7)', textTransform: 'uppercase', letterSpacing: '.05em' }}>Projects Delivered</div>
-            </div>
-            <div className="hero-animate-stat">
-              <div style={{ fontSize: '2rem', fontWeight: '800', color: '#fff' }}>98%</div>
-              <div style={{ fontSize: '.85rem', color: 'rgba(255,255,255,.7)', textTransform: 'uppercase', letterSpacing: '.05em' }}>Client Satisfaction</div>
-            </div>
-            <div className="hero-animate-stat">
-              <div style={{ fontSize: '2rem', fontWeight: '800', color: '#fff' }}>50+</div>
-              <div style={{ fontSize: '.85rem', color: 'rgba(255,255,255,.7)', textTransform: 'uppercase', letterSpacing: '.05em' }}>Expert Consultants</div>
-            </div>
-          </div>
-        </div>
+
+  // add additional slides below; background may be an imported asset path
+  const slides = useMemo(()=>[
+    {
+      // first slide mirrors old hero content and includes card
+      badge:'🚀 Enterprise Data • Cloud • AI',
+      title:'Transform Your Data Into Strategic Advantage',
+      text:'Partner with DSP to design modern data platforms, unlock powerful analytics, and upskill teams with world-class training programs.',
+      primary:{label:'Get Started',onClick:handlePrimaryClick},
+      secondary:{label:'Explore Solutions',onClick:handleSecondaryClick},
+      card:(
         <div className="hero-animate-card hero-float" style={{ minHeight: '400px' }}>
           <div className="card p-24" style={{ background: 'rgba(255,255,255,.95)', backdropFilter: 'blur(10px)', height: '100%' }}>
             <div className="label hero-card-label" style={{ color: 'var(--primary)', marginBottom: '1rem' }}>💼 What We Deliver</div>
@@ -190,6 +187,94 @@ function HomeTop(){
             </div>
           </div>
         </div>
+      )
+    },
+    // second slide uses the new image you added
+    {
+      background:slider2,
+      title:'Build with Confidence',
+      text:'Our Azure-certified engineers deliver scalable solutions on time and under budget.',
+      primary:{label:'Learn More',onClick:()=>window.location.hash='#consultancy'}
+    },
+    // another sample slide (you can remove or replace this)
+    {
+      background:slide1,
+      title:'Enterprise Data Solutions',
+      text:'Scale with secure, compliant platforms built for modern analytics.',
+      primary:{label:'Get Started',onClick:handlePrimaryClick}
+    }
+    // more slides can be added here
+  ],[]);
+
+  const [idx,setIdx]=useState(0);
+  const [animClass,setAnimClass]=useState('');
+  // automatic cycling re-enabled
+  useEffect(()=>{
+    if(slides.length>1){
+      const id=setInterval(()=>setIdx(i=>(i+1)%slides.length),5000); // 30 seconds per slide
+      return()=>clearInterval(id);
+    }
+  },[slides.length]);
+  const prev = ()=>setIdx(i=>(i-1+slides.length)%slides.length);
+  const next = ()=>setIdx(i=>(i+1)%slides.length);
+
+  const slide = slides[idx];
+  const slideStyle = slide.background
+    ? { backgroundImage:`url(${slide.background})`,backgroundSize:'cover',backgroundPosition:'center',minHeight:'100vh' }
+    : {};
+
+  // apply slide-in animation whenever idx changes
+  useEffect(()=>{
+    setAnimClass('slide-in');
+    const t=setTimeout(()=>setAnimClass(''),5000);
+    return()=>clearTimeout(t);
+  },[idx]);
+
+  return (
+    <section id="home" data-idx={idx} className={"hero" + (slide.background?'':' gradient') + (animClass?` ${animClass}`:'')} style={slideStyle}>
+      <div className="container grid-2">
+        <div>
+          {slide.badge && <span className="badge sand hero-animate-badge">{slide.badge}</span>}
+          {slide.title && (
+            <h1 className="hero-animate-title" style={{ color: '#fff', marginTop: '1rem', lineHeight: '1.2' }}>
+              {slide.title}
+            </h1>
+          )}
+          {slide.text && (
+            <p className="hero-animate-text" style={{ color: 'rgba(255,255,255,.85)', fontSize: '1.15rem', lineHeight: '1.7', marginTop: '1.5rem' }}>
+              {slide.text}
+            </p>
+          )}
+          {(slide.primary || slide.secondary) && (
+            <div className="actions hero-animate-buttons" style={{ marginTop: '2rem' }}>
+              {slide.primary && (
+                <a className="btn btn-orange hero-pulse" onClick={slide.primary.onClick}>
+                  <span style={{ fontSize: '1.1rem' }}>{slide.primary.label}</span>
+                </a>
+              )}
+              {slide.secondary && (
+                <button className="btn btn-ghost hero-glow" onClick={slide.secondary.onClick}>
+                  <span>{slide.secondary.label}</span>
+                  <span style={{ fontSize: '1.2rem' }}>→</span>
+                </button>
+              )}
+            </div>
+          )}
+          {idx===0 && (
+            <div style={{ marginTop: '3rem' }}>
+              <StatSlider />
+            </div>
+          )}
+          <div style={{position:'absolute',bottom:'1.5rem',left:'50%',transform:'translateX(-50%)',display:'flex',gap:'1rem'}}>
+            {slides.map((_,i)=>(
+              <button key={i} onClick={()=>setIdx(i)} style={{width:'10px',height:'10px',borderRadius:'50%',border:'none',background:i===idx?'#fff':'rgba(255,255,255,.4)',cursor:'pointer'}} />
+            ))}
+          </div>
+        </div>
+        {slide.card && slide.card}
+        {/* arrows */}
+        <button onClick={prev} style={{position:'absolute',top:'50%',left:'1rem',transform:'translateY(-50%)',background:'rgba(0,0,0,.3)',border:'none',color:'#fff',padding:'0.5rem 1rem',cursor:'pointer',borderRadius:'8px'}}>‹</button>
+        <button onClick={next} style={{position:'absolute',top:'50%',right:'1rem',transform:'translateY(-50%)',background:'rgba(0,0,0,.3)',border:'none',color:'#fff',padding:'0.5rem 1rem',cursor:'pointer',borderRadius:'8px'}}>›</button>
       </div>
     </section>
   )
@@ -546,7 +631,7 @@ function Training(){
             <h4 style={{ marginTop: '1rem', color: 'var(--deep)' }}>End-to-End Data Project with AWS & Databricks</h4>
             <p>Learn how to build a complete data platform from scratch using AWS services and Databricks.</p>
             <div style={{ marginTop: '1rem' }}>
-              <VideoEmbed id="zQpc0GMA6AE" title="End-to-End Data Project with AWS & Databricks" />
+              <VideoEmbed id="dQw4w9WgXcQ" title="End-to-End Data Project with AWS & Databricks" />
             </div>
           </div>
           
@@ -555,7 +640,7 @@ function Training(){
             <p>Step-by-step guide to creating a production-ready data pipeline with AWS and Power BI integration.</p>
             <div style={{ marginTop: '1rem' }}>
               <VideoEmbed 
-                id="kGxLmxcNajQ" 
+                id="dQw4w9WgXcQ" 
                 title="Build a Complete AWS Data Pipeline — From CSV to Power BI" 
               />
             </div>
@@ -1193,7 +1278,7 @@ export default function App(){
           <XSection eyebrow="Learn" title="Featured Training: AWS Data Pipeline">
             <p className="lead mb-24">Watch our comprehensive tutorial on building end-to-end data pipelines.</p>
             <VideoEmbed 
-              id="kGxLmxcNajQ" 
+              id="dQw4w9WgXcQ" 
               title="Build a Complete AWS Data Pipeline — From CSV to Power BI!" 
             />
           </XSection>
