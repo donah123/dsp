@@ -633,11 +633,17 @@ function Training(){
           
           <h3>Featured Free Training Series</h3>
           <div className="mb-24">
-            <h4 style={{ marginTop: '1rem', color: 'var(--deep)' }}>End-to-End Data Project with AWS & Databricks</h4>
-            <p>Learn how to build a complete data platform from scratch using AWS services and Databricks.</p>
+            <h4 style={{ marginTop: '1rem', color: 'var(--deep)' }}>End-to-End Data Project with AWS & Databricks | Part 3 | Data Ingestion | AWS S3</h4>
+            <p>Deep dive into ingesting data from AWS S3 as part of the larger end-to-end project.</p>
             <div style={{ marginTop: '1rem' }}>
-              {/* single video embed as requested */}
-              <VideoEmbed id="kGxLmxcNajQ" title="End-to-End Data Project with AWS & Databricks" />
+              <VideoEmbed id="zQpc0GMA6AE" title="Data Ingestion on AWS S3" />
+            </div>
+          </div>
+          <div className="mb-24">
+            <h4 style={{ marginTop: '1rem', color: 'var(--deep)' }}>End to End Data Project Series | Build a Complete AWS Data Pipeline — From CSV to Power BI! PART 1</h4>
+            <p>Step-by-step guide to creating a production-ready data pipeline with AWS and Power BI integration.</p>
+            <div style={{ marginTop: '1rem' }}>
+              <VideoEmbed id="kGxLmxcNajQ" title="AWS Data Pipeline Part 1" />
             </div>
           </div>
         </div>
